@@ -21,9 +21,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="bg-dtre-dark text-white pt-20 pb-12 relative overflow-hidden border-t border-white/10">
-      {/* Subtle BIOLYTE Background Watermark */}
-      <div className="absolute right-0 bottom-0 pointer-events-none opacity-[0.05] select-none translate-x-1/4 translate-y-1/4">
-        <DTRELogo className="w-[800px] h-auto" fill="#D12B81" />
+      {/* Subtle Centered BIOLYTE Background Watermark */}
+      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4 pointer-events-none opacity-[0.06] select-none flex justify-center w-full max-w-7xl overflow-hidden">
+        <DTRELogo className="w-[850px] sm:w-[1100px] lg:w-[1300px] max-w-none h-auto" fill="#D12B81" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
