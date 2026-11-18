@@ -1,5 +1,16 @@
 import React from 'react';
-import { Leaf, HeartHandshake, Shield, ArrowUpRight } from 'lucide-react';
+import { 
+  Leaf, 
+  ShieldCheck, 
+  ArrowUpRight, 
+  ArrowRight, 
+  Building2, 
+  Droplets, 
+  Globe2, 
+  Cpu, 
+  CheckCircle2, 
+  Sparkles 
+} from 'lucide-react';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -9,88 +20,145 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   const milestones = [
     {
       year: "Origins",
+      badge: "European R&D",
       title: "European Environmental Engineering Foundation",
       description: "Pioneering specialized anaerobic digestion, biomethane upgrading, and zero-tar thermal gasification technologies across leading European industrial and agricultural facilities."
     },
     {
       year: "Expansion",
+      badge: "KSA Establishment",
       title: "Green Gulf Industry Established in Saudi Arabia",
       description: "Establishing operational headquarters in Al Jubail Industrial City, aligning European engineering standards with the environmental goals of Saudi Vision 2030."
     },
     {
       year: "Commercialization",
+      badge: "Turnkey EPC",
       title: "Biogas & Biomethane EPC Deployment",
       description: "Designing, building, and managing turnkey agricultural and municipal digester plants, producing pipeline-grade biomethane and decentralized electricity."
     },
     {
       year: "Innovation",
+      badge: "Hydrogen & Water",
       title: "Bio-Hydrogen & Zero-Water Eco-Pavements",
       description: "Scaling decentralized thermal waste-to-hydrogen systems yielding 50 kg H₂/ton biomass, and deploying water-free dust-suppressing natural pavements across GCC infrastructure."
     },
     {
       year: "Vision 2030",
+      badge: "Circular Economy",
       title: "Regional Decarbonization Leadership",
       description: "Leading the regional transition toward closed-loop circular economy models, converting millions of tons of organic waste into valuable clean energy assets."
     }
   ];
 
+  const pillars = [
+    {
+      icon: Leaf,
+      title: "Closed-Loop Circular Economy",
+      tagline: "Valuing Every Molecule",
+      desc: "Eliminating waste by converting biological substrates into renewable methane, hydrogen, and rich organic fertilizer. Nothing is discarded; every carbon and nutrient atom remains productive.",
+      stat: "100%",
+      statLabel: "Waste Stream Diversion"
+    },
+    {
+      icon: Droplets,
+      title: "Arid Water Preservation",
+      tagline: "Zero-Water Soil Stabilization",
+      desc: "Protecting vital desert groundwater reserves by replacing continuous water truck spraying with permanent, non-toxic eco-pavement binders that withstand extreme GCC heat and heavy industrial haulers.",
+      stat: "100%",
+      statLabel: "Water Consumption Eliminated"
+    },
+    {
+      icon: ShieldCheck,
+      title: "European Standards & Vision 2030",
+      tagline: "Certified Process Integrity",
+      desc: "Full European CE, ATEX explosion-proof compliance, and rigorous biological safety protocols executed by experienced engineers based permanently in Al Jubail Industrial City.",
+      stat: "Zero",
+      statLabel: "Tar & Toxic By-products"
+    }
+  ];
+
   return (
-    <div className="bg-white min-h-screen">
-      {/* Hero Header */}
-      <div className="relative bg-dtre-dark text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-25">
+    <div className="bg-slate-50 min-h-screen text-slate-900">
+      {/* Cinematic Hero Section */}
+      <section className="relative bg-[#0c1626] text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1920&q=80"
-            alt="BIOLYTE Clean Energy Facilities"
-            className="w-full h-full object-cover"
+            alt="BIOLYTE Industrial Clean Energy Facilities"
+            className="w-full h-full object-cover object-center opacity-25"
           />
-          <div className="absolute inset-0 bg-dtre-darker/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c1626] via-[#0c1626]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1626] via-[#0c1626]/70 to-transparent" />
+          <div className="absolute -top-32 right-0 w-96 h-96 bg-dtre-accent/20 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block mb-3">
-            About BIOLYTE
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-editorial font-semibold text-white max-w-3xl leading-tight">
-            Pioneering the green transition through <span className="text-dtre-accent">European engineering</span> in Saudi Arabia.
-          </h1>
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl font-light mt-6 leading-relaxed">
-            BIOLYTE (Green Gulf Industry Limited) is a specialized green engineering company bringing proven European experience and advanced technologies into the Kingdom of Saudi Arabia. We build and manage industrial infrastructure that transforms organic waste into sustainable energy.
-          </p>
-        </div>
-      </div>
+          <div className="max-w-3xl space-y-4">
+            <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
+              About BIOLYTE & Green Gulf Industry
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-editorial font-semibold text-white leading-[1.12] tracking-tight">
+              Pioneering the green transition through <span className="text-dtre-accent">European engineering</span> in Saudi Arabia.
+            </h1>
+            <p className="text-base sm:text-xl text-white/80 font-light leading-relaxed pt-2">
+              BIOLYTE brings proven European environmental engineering and waste-to-energy technologies into the Kingdom of Saudi Arabia. We design, construct, and operate industrial infrastructure that transforms organic waste streams into clean gaseous fuels and baseload power.
+            </p>
+          </div>
 
-      {/* Main Story Section */}
-      <div id="who-we-are" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          {/* Quick Pillars Overview */}
+          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-white/80">
+            <div>
+              <div className="text-2xl sm:text-3xl font-editorial font-bold text-white">Al Jubail</div>
+              <div className="text-xs text-white/60 font-light mt-0.5">Kingdom Headquarters</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-3xl font-editorial font-bold text-white">Verona, IT</div>
+              <div className="text-xs text-white/60 font-light mt-0.5">European R&D Center</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-3xl font-editorial font-bold text-dtre-accent">Vision 2030</div>
+              <div className="text-xs text-white/60 font-light mt-0.5">Circular Economy Alignment</div>
+            </div>
+            <div>
+              <div className="text-2xl sm:text-3xl font-editorial font-bold text-white">Turnkey EPC</div>
+              <div className="text-xs text-white/60 font-light mt-0.5">Design, Build & Operate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Corporate Story & Visual Split */}
+      <section id="who-we-are" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-6">
             <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
-              Who We Are & What We Do
+              Who We Are & Our Mission
             </span>
             <h2 className="text-3xl sm:text-4xl font-editorial font-bold text-dtre-navy leading-snug">
-              Turnkey EPC contractors building and managing industrial biogas and clean energy infrastructure.
+              Turnkey EPC contractors advancing sustainable energy infrastructure across the Middle East.
             </h2>
-            <div className="h-0.5 w-16 bg-dtre-accent my-4" />
-            <p className="text-base sm:text-lg text-dtre-navy/80 font-light leading-relaxed">
+            <div className="h-0.5 w-16 bg-dtre-accent" />
+            <p className="text-base sm:text-lg text-slate-700 font-light leading-relaxed">
               We operate as specialized Engineering, Procurement, and Construction (EPC) contractors dedicated to biological and thermal waste-to-energy technologies. Our systems treat agricultural waste (manure, slurry, crop residues), food processing scrap, and municipal organic sludge to generate clean gaseous fuels, baseload electricity, and high-value bio-fertilizers.
             </p>
-            <p className="text-sm text-dtre-navy/70 leading-relaxed font-light">
+            <p className="text-sm text-slate-600 leading-relaxed font-light">
               Beyond power generation, our environmental product portfolio includes patented eco-friendly architectural binders for dust-suppressing pavements—eliminating up to 100% of water consumption across arid and industrial access corridors.
             </p>
 
-            <div className="pt-4 flex items-center gap-6">
+            <div className="pt-4 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('/services')}
-                className="bg-dtre-navy hover:bg-dtre-accent text-white px-8 py-3.5 rounded-full text-xs font-semibold tracking-wide transition-colors"
+                className="bg-slate-900 hover:bg-dtre-accent text-white px-7 py-3 rounded-full text-xs font-semibold tracking-wide transition-colors flex items-center gap-2 shadow-sm"
               >
-                Explore Technologies
+                <span>Explore Technologies</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => onNavigate('/contact')}
-                className="text-xs font-semibold text-dtre-navy hover:text-dtre-accent flex items-center gap-1 transition-colors"
+                className="text-xs font-semibold text-slate-900 hover:text-dtre-accent flex items-center gap-1.5 transition-colors px-4 py-3"
               >
-                <span>Contact Al Jubail Office</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <span>Consult Al Jubail Office</span>
+                <ArrowUpRight className="w-4 h-4 text-dtre-accent" />
               </button>
             </div>
           </div>
@@ -100,10 +168,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <img
                 src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1920&q=80"
                 alt="BIOLYTE Industrial Renewable Infrastructure"
-                className="w-full h-auto object-cover"
+                className="w-full h-[420px] object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-dtre-navy text-white p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border border-white/10">
+            {/* Elevated Metric Card */}
+            <div className="absolute -bottom-6 -left-6 bg-[#0c1626] text-white p-6 rounded-2xl shadow-2xl hidden sm:block max-w-xs border border-white/10">
               <div className="text-3xl font-editorial font-bold text-dtre-accent mb-1">
                 100%
               </div>
@@ -113,46 +182,56 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Timeline Section */}
-        <div id="mission" className="mt-28 pt-20 border-t border-slate-200">
-          <div className="max-w-2xl mb-16 space-y-3">
+      {/* Circular Economy Pillars */}
+      <section id="circular-economy" className="py-20 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-16 space-y-3">
             <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
-              Our Mission & Standards
+              Core Philosophy & Environmental Impact
             </span>
-            <h2 className="text-3xl sm:text-4xl font-editorial font-bold text-dtre-navy">
-              Bringing Updated Technology to Recycle All Waste Streams
+            <h2 className="text-3xl sm:text-5xl font-editorial font-bold text-dtre-navy">
+              Extending the Lifecycle of Natural Resources
             </h2>
-            <p className="text-sm text-dtre-navy/70 font-light leading-relaxed">
-              Our mission is to continuously introduce updated European technologies and environmental standards to recycle enormous volumes of waste—from organic substrates to e-waste and industrial by-products—making recycling easier, cleaner, and commercially valuable.
+            <p className="text-base text-slate-600 font-light leading-relaxed">
+              In a world seeking sustainability and environmental resilience, we make our contribution with energy that does not run out, does not pollute, and originates directly from biological cycles.
             </p>
           </div>
 
-          <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:bg-slate-200">
-            {milestones.map((m, idx) => {
-              const isEven = idx % 2 === 0;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pillars.map((pillar, idx) => {
+              const Icon = pillar.icon;
               return (
                 <div
-                  key={m.year}
-                  className={`relative flex flex-col sm:flex-row items-start sm:items-center ${
-                    isEven ? 'sm:flex-row-reverse' : ''
-                  }`}
+                  key={idx}
+                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-dtre-accent/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 >
-                  <div className="hidden sm:block sm:w-1/2" />
-                  <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-dtre-navy text-white text-xs font-bold flex items-center justify-center border-4 border-white shadow-md z-10">
-                    <span className="w-2 h-2 rounded-full bg-dtre-accent" />
-                  </div>
-                  <div className="pl-12 sm:pl-0 sm:w-1/2 sm:px-8">
-                    <div className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl hover:border-dtre-accent/40 transition-colors">
-                      <span className="text-xs font-mono font-bold text-dtre-accent uppercase tracking-wider block mb-1">
-                        {m.year}
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-dtre-accent group-hover:scale-110 group-hover:bg-dtre-accent group-hover:text-white transition-all duration-200">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-mono uppercase tracking-wider text-dtre-accent font-semibold block mb-1">
+                        {pillar.tagline}
                       </span>
-                      <h3 className="text-lg font-editorial font-bold text-dtre-navy mb-2">
-                        {m.title}
+                      <h3 className="text-xl font-editorial font-bold text-dtre-navy">
+                        {pillar.title}
                       </h3>
-                      <p className="text-xs text-dtre-navy/70 leading-relaxed font-light">
-                        {m.description}
-                      </p>
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-editorial font-bold text-slate-900">
+                        {pillar.stat}
+                      </span>
+                      <span className="text-[11px] text-slate-500 block font-light">
+                        {pillar.statLabel}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -160,60 +239,49 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             })}
           </div>
         </div>
+      </section>
 
-        {/* Circular Economy Section */}
-        <div id="circular-economy" className="mt-28 pt-20 border-t border-slate-200">
-          <div className="max-w-2xl mb-12 space-y-3">
-            <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
-              Circular Economy Philosophy
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-editorial font-bold text-dtre-navy">
-              Extending the Lifecycle of Resources
-            </h2>
-            <p className="text-sm text-dtre-navy/70 font-light leading-relaxed">
-              In a world increasingly in search of sustainability and environmental protection, we make our contribution with energy that does not run out, does not pollute, and comes directly from natural cycles.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                <Leaf className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-dtre-navy">
-                Zero Waste & Closed Loop
-              </h3>
-              <p className="text-xs text-dtre-navy/70 leading-relaxed font-light">
-                Reducing waste to an absolute minimum. When biological resources complete their initial use, their molecules are captured to produce renewable methane, hydrogen, and clean organic soil nutrients.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-dtre-accent flex items-center justify-center">
-                <HeartHandshake className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-dtre-navy">
-                Water & Climate Stewardship
-              </h3>
-              <p className="text-xs text-dtre-navy/70 leading-relaxed font-light">
-                Protecting vital desert water reserves by replacing continuous water truck spraying with permanent, non-toxic eco-pavement binders that resist extreme heat and heavy vehicle traffic.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-8 space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-editorial font-bold text-dtre-navy">
-                European Standards & Saudi Vision 2030
-              </h3>
-              <p className="text-xs text-dtre-navy/70 leading-relaxed font-light">
-                Engineering excellence aligned with European safety and emission directives, executed locally from Al Jubail to advance the ambitious sustainability targets of the Kingdom of Saudi Arabia.
-              </p>
-            </div>
-          </div>
+      {/* Strategic Milestone Timeline */}
+      <section id="mission" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mb-16 space-y-3">
+          <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
+            Our Journey & Roadmap
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-editorial font-bold text-dtre-navy">
+            Building Industrial Decarbonization Capacity
+          </h2>
+          <p className="text-sm text-slate-600 font-light leading-relaxed">
+            From initial research and pilot trials in Europe to full-scale EPC contracting in Al Jubail Industrial City.
+          </p>
         </div>
-      </div>
+
+        <div className="space-y-6">
+          {milestones.map((m, idx) => (
+            <div
+              key={m.year}
+              className="p-7 sm:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-dtre-accent/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+            >
+              <div className="sm:w-1/4 shrink-0 space-y-1">
+                <span className="text-xs font-mono uppercase tracking-wider text-dtre-accent font-bold px-2.5 py-1 rounded-full bg-dtre-accent/10 inline-block mb-1">
+                  {m.badge}
+                </span>
+                <div className="text-2xl font-editorial font-bold text-slate-900">
+                  {m.year}
+                </div>
+              </div>
+
+              <div className="sm:w-3/4 space-y-1">
+                <h3 className="text-lg font-bold text-dtre-navy">
+                  {m.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
+                  {m.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
