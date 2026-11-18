@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
             isScrolled
               ? 'bg-dtre-navy text-white border-white/10'
               : isDarkTheme
-              ? 'bg-dtre-darker/60 backdrop-blur-sm text-white/90 border-white/10'
+              ? 'bg-dtre-darker/90 text-white/90 border-white/10'
               : 'bg-dtre-navy text-white border-white/10'
           }`}>
             <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -86,12 +86,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
         {/* Main Navbar */}
         <header
-          className={`w-full transition-all duration-300 ${
+          className={`w-full transition-colors duration-300 ${
             isScrolled
-              ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200 text-dtre-navy py-4'
+              ? 'bg-white/98 shadow-sm border-b border-slate-200 text-dtre-navy py-4'
               : isDarkTheme
               ? 'bg-transparent text-white py-6'
-              : 'bg-white/95 backdrop-blur-md text-dtre-navy border-b border-slate-100 py-5'
+              : 'bg-white/98 text-dtre-navy border-b border-slate-100 py-5'
           }`}
         >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,14 +156,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                           : 'left-0 top-full pt-2 w-[640px] -ml-6';
 
                         return (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.18, ease: "easeOut" }}
-                            className={`absolute ${positionClass}`}
+                          <div
+                            className={`absolute ${positionClass} z-50 transition-opacity duration-200`}
                           >
-                            <div className="biolyte-dark-glass relative rounded-2xl p-6 text-white overflow-hidden border border-white/[0.14] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25)]">
+                            <div 
+                              className="relative rounded-2xl p-6 text-white overflow-hidden border border-white/[0.15] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25)]"
+                              style={{
+                                backgroundColor: 'rgba(12, 22, 38, 0.70)',
+                                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                                backdropFilter: 'blur(24px) saturate(180%)',
+                              }}
+                            >
                               {/* Dark Glass Top Sheen & Subtle Ambient Rose Glow */}
                               <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
                               <div className="absolute -top-16 -right-16 w-44 h-44 bg-dtre-accent/15 rounded-full blur-3xl pointer-events-none" />
@@ -220,7 +223,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                 </button>
                               </div>
                             </div>
-                          </motion.div>
+                          </div>
                         );
                       })()}
                     </AnimatePresence>
