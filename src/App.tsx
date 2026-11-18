@@ -97,7 +97,7 @@ export function App() {
       <Header
         currentPath={currentPath}
         onNavigate={handleNavigate}
-        isHeroDark={currentPath === '/' || currentPath === '/homepage'}
+        isHeroDark={true}
       />
       <main className="flex-1">
         {renderPage()}

@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isDarkTheme = !isScrolled && isHeroDark && currentPath === '/';
+  const isDarkTheme = !isScrolled && isHeroDark;
 
   return (
     <>
@@ -85,16 +85,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
         )}
 
         {/* Main Navbar */}
-        <header
-          className={`w-full transition-all duration-300 border-b ${
-            isScrolled
-              ? 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-slate-200/80 py-3.5'
-              : isDarkTheme
-              ? 'bg-transparent border-transparent py-6'
-              : 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-slate-200/80 py-4'
-          }`}
-        >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header className="relative w-full transition-all duration-300">
+          {/* Frosted Glass Background Plate (Isolated layer so it never breaks child dropdowns) */}
+          <div
+            className={`absolute inset-0 -z-10 transition-all duration-300 ${
+              isScrolled
+                ? 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-b border-slate-200/80'
+                : isDarkTheme
+                ? 'bg-transparent border-b border-transparent'
+                : 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-b border-slate-200/80'
+            }`}
+          />
+
+          <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+            isScrolled ? 'py-3.5' : isDarkTheme ? 'py-6' : 'py-4'
+          }`}>
           <div className="flex items-center justify-between">
             {/* Logo */}
             <button

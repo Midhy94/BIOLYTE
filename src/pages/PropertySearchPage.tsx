@@ -31,21 +31,31 @@ export const PropertySearchPage: React.FC = () => {
   }, [searchTerm, selectedSector, selectedStatus]);
 
   return (
-    <div className="bg-slate-50 min-h-screen pt-32 sm:pt-40 pb-16 sm:pb-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Header */}
-        <div className="max-w-3xl mb-12 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
-            Commercial Property Search
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-editorial font-semibold text-dtre-navy leading-tight">
-            Explore Prime Commercial Mandates
-          </h1>
-          <p className="text-base sm:text-lg text-dtre-navy/70 font-light">
-            Search our active portfolio of Grade A logistics warehouses, Golden Triangle laboratories, and urban industrial facilities across the UK.
-          </p>
+    <div className="bg-slate-50 min-h-screen text-slate-900">
+      {/* Cinematic Hero Section */}
+      <section className="relative bg-[#0c1626] text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0c1626] via-[#0c1626]/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1626] via-[#0c1626]/70 to-transparent" />
+          <div className="absolute -top-32 right-0 w-96 h-96 bg-dtre-accent/20 rounded-full blur-3xl pointer-events-none" />
         </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-4">
+            <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
+              Commercial Property Search
+            </span>
+            <h1 className="text-4xl sm:text-6xl font-editorial font-semibold text-white leading-tight">
+              Explore Prime Commercial Mandates
+            </h1>
+            <p className="text-base sm:text-lg text-white/80 font-light">
+              Search our active portfolio of Grade A logistics warehouses, Golden Triangle laboratories, and urban industrial facilities across the UK.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 pb-16 sm:pb-24">
         {/* Filter Controls Bar */}
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 mb-10 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
