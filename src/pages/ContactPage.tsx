@@ -292,9 +292,10 @@ export const ContactPage: React.FC = () => {
             )}
           </div>
 
-          {/* Right Column: Strategic Hubs & Operational Standards */}
-          <div className="lg:col-span-5 space-y-6">
-            {officesList.map((office) => {
+          {/* Right Column: Strategic Hubs & Operational Standards (Sticky) */}
+          <div className="lg:col-span-5">
+            <div className="sticky top-28 space-y-6">
+              {officesList.map((office) => {
               const isHQ = office.id === 'jubail';
               return (
                 <div
@@ -351,6 +352,7 @@ export const ContactPage: React.FC = () => {
               <p className="text-xs text-white/70 leading-relaxed font-light">
                 All BIOLYTE digester tanks, biological scrubbers, and thermal conversion units conform to European ATEX explosion-proof safety codes and Saudi industrial environmental regulations.
               </p>
+            </div>
             </div>
           </div>
         </div>

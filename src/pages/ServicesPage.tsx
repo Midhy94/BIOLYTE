@@ -257,72 +257,78 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             )}
           </div>
 
-          {/* Right Column: Engineering Consultation Card & Whitepaper Access */}
-          <div className="lg:col-span-4 space-y-8">
-            {/* Consultation Card */}
-            <div className="bg-[#0c1626] text-white rounded-3xl p-8 relative overflow-hidden shadow-2xl border border-white/10 space-y-6">
-              <div className="space-y-2">
-                <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
-                  Project Consultation
-                </span>
-                <h3 className="text-xl font-editorial font-bold text-white">
-                  Evaluate Your Feedstock & Plant Economics
-                </h3>
-                <p className="text-xs text-white/70 font-light leading-relaxed">
-                  Our Al Jubail engineers can simulate daily gas yields, power outputs, and payback periods based on your exact organic waste volumes.
+          {/* Right Column: Engineering Consultation Card & Whitepaper Access (Sticky with Page Content) */}
+          <div className="lg:col-span-4">
+            <div className="sticky top-28 space-y-6">
+              {/* Consultation Card */}
+              <div className="bg-[#0c1626] text-white rounded-3xl p-8 relative overflow-hidden shadow-2xl border border-white/10 space-y-6">
+                {/* Ambient Rose Sheen */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.05] via-transparent to-transparent pointer-events-none" />
+                <div className="absolute -top-16 -right-16 w-36 h-36 bg-dtre-accent/20 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="relative z-10 space-y-2">
+                  <span className="text-xs uppercase tracking-widest text-dtre-accent font-semibold block">
+                    Project Consultation
+                  </span>
+                  <h3 className="text-xl font-editorial font-bold text-white">
+                    Evaluate Your Feedstock & Plant Economics
+                  </h3>
+                  <p className="text-xs text-white/70 font-light leading-relaxed">
+                    Our Al Jubail engineers can simulate daily gas yields, power outputs, and payback periods based on your exact organic waste volumes.
+                  </p>
+                </div>
+
+                <div className="relative z-10 space-y-3 pt-2 border-t border-white/10 text-xs text-white/80">
+                  <div className="flex items-center gap-2.5">
+                    <ShieldCheck className="w-4 h-4 text-dtre-accent shrink-0" />
+                    <span>Certified European process design standards</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <Zap className="w-4 h-4 text-dtre-accent shrink-0" />
+                    <span>On-site feasibility assessment in Saudi Arabia</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <BarChart3 className="w-4 h-4 text-dtre-accent shrink-0" />
+                    <span>Bankable yield guarantees & off-take structuring</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => onNavigate('/contact')}
+                  className="relative z-10 w-full bg-dtre-accent hover:bg-dtre-accentHover text-white py-3.5 rounded-full font-semibold text-xs tracking-wide transition-all shadow-lg hover:shadow-dtre-accent/30 flex items-center justify-center gap-2"
+                >
+                  <span>Request Technical Consultation</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Technical Whitepapers Box */}
+              <div className="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-dtre-accent">
+                  <FileText className="w-4 h-4" />
+                  <span>Technical Intelligence</span>
+                </div>
+                <h4 className="text-base font-editorial font-bold text-slate-900 leading-snug">
+                  Read our engineering whitepaper for {activeService.title}
+                </h4>
+                <p className="text-xs text-slate-600 font-light leading-relaxed">
+                  Review verified substrate conversion tables, membrane separation benchmarks, and emission offset calculations.
                 </p>
+                <button
+                  onClick={() => onNavigate('/research-insights')}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-dtre-accent hover:underline pt-1"
+                >
+                  <span>Browse Technical Library</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
               </div>
 
-              <div className="space-y-3 pt-2 border-t border-white/10 text-xs text-white/80">
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck className="w-4 h-4 text-dtre-accent shrink-0" />
-                  <span>Certified European process design standards</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Zap className="w-4 h-4 text-dtre-accent shrink-0" />
-                  <span>On-site feasibility assessment in Saudi Arabia</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <BarChart3 className="w-4 h-4 text-dtre-accent shrink-0" />
-                  <span>Bankable yield guarantees & off-take structuring</span>
-                </div>
+              {/* Quick Contact Line */}
+              <div className="p-6 rounded-2xl bg-white/70 border border-slate-200 text-xs text-slate-600 space-y-1">
+                <span className="font-semibold text-slate-900 block">Direct Engineering Inquiries:</span>
+                <p>Al Jubail Operations Hub: +966 13 766 4909</p>
+                <p>Email: info@greengulfindustry.com</p>
               </div>
-
-              <button
-                onClick={() => onNavigate('/contact')}
-                className="w-full bg-dtre-accent hover:bg-dtre-accentHover text-white py-3.5 rounded-full font-semibold text-xs tracking-wide transition-all shadow-lg hover:shadow-dtre-accent/30 flex items-center justify-center gap-2"
-              >
-                <span>Request Technical Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Technical Whitepapers Box */}
-            <div className="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-dtre-accent">
-                <FileText className="w-4 h-4" />
-                <span>Technical Intelligence</span>
-              </div>
-              <h4 className="text-base font-editorial font-bold text-slate-900 leading-snug">
-                Read our engineering whitepaper for {activeService.title}
-              </h4>
-              <p className="text-xs text-slate-600 font-light leading-relaxed">
-                Review verified substrate conversion tables, membrane separation benchmarks, and emission offset calculations.
-              </p>
-              <button
-                onClick={() => onNavigate('/research-insights')}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-dtre-accent hover:underline pt-1"
-              >
-                <span>Browse Technical Library</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            {/* Quick Contact Line */}
-            <div className="p-6 rounded-2xl bg-white/70 border border-slate-200 text-xs text-slate-600 space-y-1">
-              <span className="font-semibold text-slate-900 block">Direct Engineering Inquiries:</span>
-              <p>Al Jubail Operations Hub: +966 13 766 4909</p>
-              <p>Email: info@greengulfindustry.com</p>
             </div>
           </div>
         </div>
