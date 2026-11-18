@@ -163,16 +163,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                             className={`absolute ${positionClass}`}
                           >
-                            <div className="relative rounded-2xl p-6 text-dtre-navy overflow-hidden bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.9)]">
-                              {/* Glass Specular Top Sheen */}
-                              <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-transparent pointer-events-none" />
+                            <div className="relative rounded-2xl p-6 text-white overflow-hidden bg-[#0c1626]/85 backdrop-blur-2xl backdrop-saturate-150 border border-white/[0.14] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2)]">
+                              {/* Dark Glass Top Sheen & Subtle Ambient Rose Glow */}
+                              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.09] via-transparent to-transparent pointer-events-none" />
+                              <div className="absolute -top-16 -right-16 w-44 h-44 bg-dtre-accent/15 rounded-full blur-3xl pointer-events-none" />
 
                               <div className={`relative z-10 grid ${isSingleCol ? 'grid-cols-1 gap-4' : 'grid-cols-2 gap-8'}`}>
                                 {item.columns?.map((col) => (
                                   <div key={col.title} className="space-y-3.5">
-                                    <div className="text-xs font-semibold uppercase tracking-wider text-dtre-muted/90 border-b border-slate-200/50 pb-2 flex items-center justify-between">
+                                    <div className="text-xs font-semibold uppercase tracking-wider text-white/50 border-b border-white/[0.08] pb-2 flex items-center justify-between">
                                       <span>{col.title}</span>
-                                      <span className="text-[10px] font-mono text-dtre-accent/80 font-normal">
+                                      <span className="text-[10px] font-mono text-dtre-accent font-medium px-1.5 py-0.5 rounded bg-dtre-accent/15">
                                         0{col.links.length}
                                       </span>
                                     </div>
@@ -184,14 +185,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                             onNavigate(link.url);
                                             setActiveMegaMenu(null);
                                           }}
-                                          className="w-full text-left group block p-2.5 rounded-xl hover:bg-white/70 hover:shadow-sm border border-transparent hover:border-white/80 transition-all duration-150"
+                                          className="w-full text-left group block p-2.5 rounded-xl hover:bg-white/[0.07] border border-transparent hover:border-white/[0.08] transition-all duration-150"
                                         >
-                                          <div className="text-sm font-semibold text-dtre-navy group-hover:text-dtre-accent flex items-center justify-between transition-colors">
+                                          <div className="text-sm font-semibold text-white/95 group-hover:text-dtre-accent flex items-center justify-between transition-colors">
                                             <span>{link.title}</span>
                                             <DTREArrow className="w-2.5 h-2.5 text-dtre-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-150" />
                                           </div>
                                           {link.description && (
-                                            <p className="text-xs text-dtre-muted group-hover:text-dtre-navy/80 mt-1 line-clamp-2 leading-relaxed transition-colors">
+                                            <p className="text-xs text-white/55 group-hover:text-white/80 mt-1 line-clamp-2 leading-relaxed transition-colors font-light">
                                               {link.description}
                                             </p>
                                           )}
@@ -202,9 +203,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                 ))}
                               </div>
 
-                              {/* Mega Menu Bottom Callout */}
-                              <div className="relative z-10 mt-6 pt-3.5 border-t border-slate-200/50 flex items-center justify-between text-xs bg-white/50 backdrop-blur-md -mx-6 -mb-6 px-6 py-3.5">
-                                <span className="text-dtre-navy/70 font-medium">
+                              {/* Mega Menu Bottom Callout (Dark Glass Unified) */}
+                              <div className="relative z-10 mt-6 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs bg-white/[0.03] backdrop-blur-md -mx-6 -mb-6 px-6 py-3.5">
+                                <span className="text-white/60 font-normal">
                                   Need turnkey feasibility or EPC consultation?
                                 </span>
                                 <button
@@ -212,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                     onNavigate('/contact');
                                     setActiveMegaMenu(null);
                                   }}
-                                  className="font-semibold text-dtre-navy hover:text-dtre-accent flex items-center gap-1.5 transition-colors group"
+                                  className="font-semibold text-white hover:text-dtre-accent flex items-center gap-1.5 transition-colors group"
                                 >
                                   <span>Speak to an Engineer</span>
                                   <ArrowRight className="w-3 h-3 text-dtre-accent group-hover:translate-x-0.5 transition-transform" />
