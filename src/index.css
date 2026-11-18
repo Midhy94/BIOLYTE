@@ -91,9 +91,16 @@ h1, h2, h3, h4, h5, h6,
 
 /* Bulletproof High-Performance Dark Glass Effect */
 .biolyte-dark-glass {
-  background-color: rgba(12, 22, 38, 0.65) !important;
+  background-color: rgba(12, 22, 38, 0.7) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+/* Bulletproof White Frosted Glass for Scrolled Navbar */
+.biolyte-white-glass {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
 }
 
 /* Smooth custom scrollbars */

@@ -86,12 +86,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
         {/* Main Navbar */}
         <header
-          className={`w-full transition-colors duration-300 ${
+          className={`w-full transition-all duration-300 border-b ${
             isScrolled
-              ? 'bg-white/98 shadow-sm border-b border-slate-200 text-dtre-navy py-4'
+              ? 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-slate-200/80 py-3.5'
               : isDarkTheme
-              ? 'bg-transparent text-white py-6'
-              : 'bg-white/98 text-dtre-navy border-b border-slate-100 py-5'
+              ? 'bg-transparent border-transparent py-6'
+              : 'biolyte-white-glass shadow-[0_4px_25px_-5px_rgba(0,0,0,0.06)] border-slate-200/80 py-4'
           }`}
         >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
             </button>
 
             {/* Desktop Primary Nav */}
-            <nav className="hidden lg:flex items-center gap-8 text-sm font-medium">
+            <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold">
               {headerNavigation.map((item) => {
                 const hasMega = Boolean(item.columns && item.columns.length > 0);
                 const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
@@ -126,19 +126,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                         onNavigate(item.url);
                         setActiveMegaMenu(null);
                       }}
-                      className={`inline-flex items-center gap-1 py-2 tracking-tight transition-colors ${
+                      className={`inline-flex items-center gap-1.5 py-2 tracking-tight transition-colors font-semibold ${
                         isActive
-                          ? isDarkTheme ? 'text-dtre-accent font-semibold' : 'text-dtre-accent font-semibold'
+                          ? 'text-dtre-accent'
                           : isDarkTheme
                           ? 'text-white/90 hover:text-white'
-                          : 'text-dtre-navy/80 hover:text-dtre-navy'
+                          : 'text-slate-900 hover:text-dtre-accent'
                       }`}
                     >
                       {item.title}
                       {hasMega && (
                         <ChevronDown 
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                            activeMegaMenu === item.title ? 'rotate-180' : ''
+                            activeMegaMenu === item.title 
+                              ? 'rotate-180 text-dtre-accent' 
+                              : isDarkTheme ? 'text-white/70' : 'text-slate-500'
                           }`} 
                         />
                       )}
@@ -233,7 +235,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
             </nav>
 
             {/* Desktop Side Nav */}
-            <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
+            <div className="hidden lg:flex items-center gap-6 text-sm font-semibold">
               {headerSideNavigation.map((side) => {
                 const isContact = side.title === 'Contact';
                 if (isContact) {
@@ -241,10 +243,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                     <button
                       key={side.title}
                       onClick={() => onNavigate(side.url)}
-                      className={`px-4 py-2 rounded-full font-semibold transition-all duration-200 shadow-sm ${
+                      className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 shadow-sm ${
                         isDarkTheme
-                          ? 'bg-white text-dtre-navy hover:bg-dtre-accent hover:text-white'
-                          : 'bg-dtre-navy text-white hover:bg-dtre-darker'
+                          ? 'bg-white text-dtre-navy hover:bg-dtre-accent hover:text-white hover:shadow-md'
+                          : 'bg-slate-900 text-white hover:bg-dtre-accent hover:shadow-md'
                       }`}
                     >
                       {side.title}
@@ -256,12 +258,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                   <button
                     key={side.title}
                     onClick={() => onNavigate(side.url)}
-                    className={`transition-colors ${
+                    className={`transition-colors font-semibold ${
                       currentPath === side.url
-                        ? 'text-dtre-accent font-semibold'
+                        ? 'text-dtre-accent'
                         : isDarkTheme
-                        ? 'text-white/80 hover:text-white'
-                        : 'text-dtre-navy/80 hover:text-dtre-navy'
+                        ? 'text-white/90 hover:text-white'
+                        : 'text-slate-900 hover:text-dtre-accent'
                     }`}
                   >
                     {side.title}
@@ -274,16 +276,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
             <div className="lg:hidden flex items-center gap-3">
               <button
                 onClick={() => onNavigate('/contact')}
-                className={`text-xs px-3 py-1.5 rounded-full font-semibold ${
-                  isDarkTheme ? 'bg-white text-dtre-navy' : 'bg-dtre-navy text-white'
+                className={`text-xs px-3.5 py-1.5 rounded-full font-semibold transition-colors ${
+                  isDarkTheme ? 'bg-white text-dtre-navy' : 'bg-slate-900 text-white hover:bg-dtre-accent'
                 }`}
               >
                 Contact
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 rounded-full ${
-                  isDarkTheme ? 'text-white hover:bg-white/10' : 'text-dtre-navy hover:bg-slate-100'
+                className={`p-2 rounded-full transition-colors ${
+                  isDarkTheme ? 'text-white hover:bg-white/10' : 'text-slate-900 hover:bg-slate-100'
                 }`}
                 aria-label="Toggle Navigation Menu"
               >
