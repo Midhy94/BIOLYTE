@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Middle Section: Compact Locations */}
-        <div className="py-8 sm:py-10 border-b border-white/10">
+        <div className="py-8 sm:py-10 border-b border-white/[0.08]">
           <div className="text-xs uppercase tracking-widest text-dtre-accent font-semibold mb-5">
             Our Locations
           </div>
@@ -88,14 +88,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             {officesList.map((office) => (
               <div 
                 key={office.id} 
-                className="bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 rounded-xl p-5 transition-colors flex flex-col justify-between"
+                className="bg-white/[0.025] hover:bg-white/[0.045] border border-white/[0.06] hover:border-white/[0.12] rounded-xl p-5 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-sm sm:text-base font-semibold tracking-wide text-white">
                       {office.city}
                     </h4>
-                    <MapPin className="w-3.5 h-3.5 text-dtre-accent" />
+                    <MapPin className="w-3.5 h-3.5 text-dtre-accent opacity-80" />
                   </div>
                   <div className="text-xs text-white/60 space-y-0.5 mb-4 font-light leading-relaxed">
                     {office.addressLines.map((line, idx) => (
@@ -104,7 +104,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
                   <a
                     href={`tel:${office.phone.replace(/[^0-9+]/g, '')}`}
                     className="text-dtre-accent hover:underline flex items-center gap-1 font-medium"
