@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DTRELogo } from './DTRELogo';
-import { officesList, footerAccreditations } from '../data/siteData';
+import { officesList } from '../data/siteData';
 import { ArrowUpRight, CheckCircle2, Mail, Phone, MapPin } from 'lucide-react';
 
 interface FooterProps {
@@ -120,47 +120,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Lower Navigation & Accreditations */}
-        <div className="py-12 flex flex-col md:flex-row items-center justify-between gap-8 border-b border-white/10">
-          {/* Quick Nav Links */}
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
-            <button onClick={() => onNavigate('/services#biogas')} className="hover:text-white transition-colors">
+        {/* Lower Centralized Navigation Links */}
+        <div className="py-10 border-b border-white/10">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3.5 text-sm text-white/70 text-center max-w-5xl mx-auto">
+            <button onClick={() => onNavigate('/services#biogas')} className="hover:text-dtre-accent transition-colors">
               Biogas & Anaerobic Digestion
             </button>
-            <button onClick={() => onNavigate('/services#biomethane')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/services#biomethane')} className="hover:text-dtre-accent transition-colors">
               Bio-Methane & Bio-CNG
             </button>
-            <button onClick={() => onNavigate('/services#biohydrogen')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/services#biohydrogen')} className="hover:text-dtre-accent transition-colors">
               Bio-Hydrogen Systems
             </button>
-            <button onClick={() => onNavigate('/services#biomethanol')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/services#biomethanol')} className="hover:text-dtre-accent transition-colors">
               Bio-Methanol & Marine Fuels
             </button>
-            <button onClick={() => onNavigate('/services#pavements')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/services#pavements')} className="hover:text-dtre-accent transition-colors">
               Natural Pavements
             </button>
-            <button onClick={() => onNavigate('/research-insights')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/research-insights')} className="hover:text-dtre-accent transition-colors">
               Technologies & Insights
             </button>
-            <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/about')} className="hover:text-dtre-accent transition-colors">
               About BIOLYTE
             </button>
-            <button onClick={() => onNavigate('/contact')} className="hover:text-white transition-colors">
+            <button onClick={() => onNavigate('/contact')} className="hover:text-dtre-accent transition-colors">
               Contact
             </button>
-          </div>
-
-          {/* Accreditations */}
-          <div className="flex items-center gap-6 shrink-0">
-            {footerAccreditations.map((acc) => (
-              <img
-                key={acc.name}
-                src={acc.url}
-                alt={acc.name}
-                title={acc.name}
-                className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity brightness-0 invert"
-              />
-            ))}
           </div>
         </div>
 
