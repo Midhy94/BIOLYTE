@@ -49,8 +49,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
     <>
       {/* Fixed Header & Announcement Wrapper with Autohide on Scroll Down */}
       <div 
-        className={`fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ease-in-out ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed left-0 right-0 z-40 transition-[top] duration-300 ease-in-out ${
+          isVisible ? 'top-0' : '-top-40'
         }`}
       >
         {/* Top Banner */}
@@ -157,15 +157,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
                         return (
                           <motion.div
-                            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.18, ease: "easeOut" }}
                             className={`absolute ${positionClass}`}
                           >
-                            <div className="relative rounded-2xl p-6 text-white overflow-hidden bg-[#0c1626]/85 backdrop-blur-2xl backdrop-saturate-150 border border-white/[0.14] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2)]">
+                            <div className="biolyte-dark-glass relative rounded-2xl p-6 text-white overflow-hidden border border-white/[0.14] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25)]">
                               {/* Dark Glass Top Sheen & Subtle Ambient Rose Glow */}
-                              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.09] via-transparent to-transparent pointer-events-none" />
+                              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-transparent to-transparent pointer-events-none" />
                               <div className="absolute -top-16 -right-16 w-44 h-44 bg-dtre-accent/15 rounded-full blur-3xl pointer-events-none" />
 
                               <div className={`relative z-10 grid ${isSingleCol ? 'grid-cols-1 gap-4' : 'grid-cols-2 gap-8'}`}>
@@ -185,14 +185,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                             onNavigate(link.url);
                                             setActiveMegaMenu(null);
                                           }}
-                                          className="w-full text-left group block p-2.5 rounded-xl hover:bg-white/[0.07] border border-transparent hover:border-white/[0.08] transition-all duration-150"
+                                          className="w-full text-left group block p-2.5 rounded-xl hover:bg-white/[0.08] border border-transparent hover:border-white/[0.08] transition-all duration-150"
                                         >
                                           <div className="text-sm font-semibold text-white/95 group-hover:text-dtre-accent flex items-center justify-between transition-colors">
                                             <span>{link.title}</span>
                                             <DTREArrow className="w-2.5 h-2.5 text-dtre-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-150" />
                                           </div>
                                           {link.description && (
-                                            <p className="text-xs text-white/55 group-hover:text-white/80 mt-1 line-clamp-2 leading-relaxed transition-colors font-light">
+                                            <p className="text-xs text-white/60 group-hover:text-white/85 mt-1 line-clamp-2 leading-relaxed transition-colors font-light">
                                               {link.description}
                                             </p>
                                           )}
@@ -203,8 +203,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
                                 ))}
                               </div>
 
-                              {/* Mega Menu Bottom Callout (Dark Glass Unified) */}
-                              <div className="relative z-10 mt-6 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs bg-white/[0.03] backdrop-blur-md -mx-6 -mb-6 px-6 py-3.5">
+                              {/* Mega Menu Bottom Callout (Unified Seamless Dark Glass) */}
+                              <div className="relative z-10 mt-6 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs bg-black/20 -mx-6 -mb-6 px-6 py-3.5">
                                 <span className="text-white/60 font-normal">
                                   Need turnkey feasibility or EPC consultation?
                                 </span>

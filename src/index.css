@@ -89,6 +89,13 @@ h1, h2, h3, h4, h5, h6,
   color: #D12B81;
 }
 
+/* Bulletproof High-Performance Dark Glass Effect */
+.biolyte-dark-glass {
+  background-color: rgba(12, 22, 38, 0.65) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
 /* Smooth custom scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
