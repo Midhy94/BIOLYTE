@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { heroSlides } from '../data/siteData';
-import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  motion, 
+  AnimatePresence, 
+  useScroll, 
+  useTransform, 
+  useSpring, 
+  useMotionValue 
+} from 'framer-motion';
 import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { DTREArrow } from './DTRELogo';
 
@@ -11,8 +18,61 @@ interface HeroSliderProps {
 export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigate }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
 
   const duration = 7000; // 7 seconds per slide
+
+  // 1. Scroll-Driven Parallax
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Background image moves slower than scroll + gentle cinematic scale
+  const imageY = useTransform(smoothProgress, [0, 1], ['0%', '24%']);
+  const imageScale = useTransform(smoothProgress, [0, 1], [1, 1.12]);
+
+  // Foreground text moves slightly faster to create multi-plane depth
+  const textY = useTransform(smoothProgress, [0, 1], ['0%', '35%']);
+  const textOpacity = useTransform(smoothProgress, [0, 0.75], [1, 0]);
+
+  // Floating ambient glow moves on an intermediate plane
+  const glowY = useTransform(smoothProgress, [0, 1], ['0%', '50%']);
+
+  // 2. Interactive Cursor Parallax (Subtle 3D Floating Effect on Desktop)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 120 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  const tiltX = useTransform(smoothMouseX, [-0.5, 0.5], ['-1.5%', '1.5%']);
+  const tiltY = useTransform(smoothMouseY, [-0.5, 0.5], ['-1.5%', '1.5%']);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   useEffect(() => {
     if (isPaused) return;
@@ -41,35 +101,55 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigate }) => {
 
   return (
     <section 
+      ref={containerRef}
       className="relative min-h-screen h-[100vh] w-full overflow-hidden bg-dtre-dark text-white select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Background Images with AnimatePresence */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slide.id}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src={slide.imageUrl}
-            alt={slide.title}
-            className="w-full h-full object-cover object-center"
-          />
-          {/* Subtle cinematic gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-dtre-darker/95 via-dtre-darker/60 to-dtre-darker/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-dtre-darker/90 via-dtre-darker/40 to-transparent" />
-        </motion.div>
-      </AnimatePresence>
+      {/* Parallax Background Container with Bleed Padding */}
+      <motion.div
+        style={{
+          y: imageY,
+          scale: imageScale,
+          x: tiltX,
+        }}
+        className="absolute -inset-x-6 -top-12 -bottom-24 z-0 will-change-transform pointer-events-none"
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slide.id}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0"
+          >
+            <img
+              src={slide.imageUrl}
+              alt={slide.title}
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Subtle cinematic gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-dtre-darker/95 via-dtre-darker/60 to-dtre-darker/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-dtre-darker/90 via-dtre-darker/40 to-transparent" />
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Floating Ambient Parallax Glow */}
+      <motion.div
+        style={{ y: glowY }}
+        className="absolute -top-24 right-1/4 w-[500px] h-[500px] bg-dtre-accent/15 rounded-full blur-[110px] pointer-events-none z-[1]"
+      />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-36 sm:pt-44 pb-12 sm:pb-16">
-        {/* Central Hero Headline Block */}
-        <div className="max-w-3xl space-y-6">
+        {/* Central Hero Headline Block with Parallax & Opacity Falloff */}
+        <motion.div 
+          style={{ y: textY, opacity: textOpacity }}
+          className="max-w-3xl space-y-6"
+        >
           <motion.div
             key={`badge-${slide.id}`}
             initial={{ opacity: 0, y: 15 }}
@@ -122,7 +202,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onNavigate }) => {
               <DTREArrow className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar: Slide Counter, Progress Bar, Arrows & Scroll Indicator */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-8 border-t border-white/10">

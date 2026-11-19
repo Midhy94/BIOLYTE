@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Leaf, 
   ShieldCheck, 
@@ -17,6 +18,14 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '24%']);
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+
   const milestones = [
     {
       year: "Origins",
@@ -79,9 +88,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="bg-slate-50 min-h-screen text-slate-900">
-      {/* Cinematic Hero Section */}
-      <section className="relative bg-[#0c1626] text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* Cinematic Hero Section with Parallax */}
+      <section 
+        ref={heroRef}
+        className="relative bg-[#0c1626] text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden"
+      >
+        <motion.div 
+          style={{ y: heroImageY, scale: heroImageScale }}
+          className="absolute -inset-x-4 -top-12 -bottom-24 z-0 will-change-transform pointer-events-none"
+        >
           <img
             src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1920&q=80"
             alt="BIOLYTE Industrial Clean Energy Facilities"
@@ -90,7 +105,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c1626] via-[#0c1626]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0c1626] via-[#0c1626]/70 to-transparent" />
           <div className="absolute -top-32 right-0 w-96 h-96 bg-dtre-accent/20 rounded-full blur-3xl pointer-events-none" />
-        </div>
+        </motion.div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
