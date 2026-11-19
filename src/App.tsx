@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { PageLoader } from './components/PageLoader';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
@@ -95,6 +96,7 @@ export function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-dtre-navy font-sans antialiased selection:bg-dtre-accent selection:text-white">
+      <PageLoader />
       <Header
         currentPath={currentPath}
         onNavigate={handleNavigate}
