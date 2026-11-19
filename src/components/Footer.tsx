@@ -21,16 +21,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="bg-dtre-dark text-white pt-20 pb-12 relative overflow-hidden border-t border-white/10">
-      {/* Subtle Centered BIOLYTE Background Watermark */}
-      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4 pointer-events-none opacity-[0.06] select-none flex justify-center w-full max-w-7xl overflow-hidden">
-        <DTRELogo className="w-[850px] sm:w-[1100px] lg:w-[1300px] max-w-none h-auto" fill="#D12B81" />
+      {/* Subtle Centered BIOLYTE Background Watermark (Subtle White) */}
+      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4 pointer-events-none opacity-[0.05] select-none flex justify-center w-full max-w-7xl overflow-hidden">
+        <DTRELogo className="w-[850px] sm:w-[1100px] lg:w-[1300px] max-w-none h-auto" fill="#FFFFFF" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Section: Newsletter and Brand Manifesto */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           <div className="lg:col-span-6 space-y-4">
-            <DTRELogo className="h-8 w-auto" fill="#D12B81" />
+            <DTRELogo className="h-8 w-auto opacity-90" fill="#FFFFFF" />
             <p className="text-xl sm:text-2xl font-editorial font-medium text-white/90 max-w-xl leading-snug">
               Turnkey EPC contractors and sustainable energy partners operating across Saudi Arabia and internationally.
             </p>
