@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ResearchItem } from '../types';
 import { X, Download, Calendar, Clock, Share2, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +11,19 @@ interface ReportModalProps {
 export const ReportModal: React.FC<ReportModalProps> = ({ report, onClose }) => {
   const [copied, setCopied] = React.useState(false);
   const [downloaded, setDownloaded] = React.useState(false);
+
+  useEffect(() => {
+    if (!report) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [report, onClose]);
 
   if (!report) return null;
 

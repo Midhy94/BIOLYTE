@@ -271,9 +271,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             )}
           </div>
 
-          {/* Right Column: Engineering Consultation Card & Whitepaper Access (Sticky with Page Content) */}
+          {/* Right Column: Engineering Consultation Card & Whitepaper Access (Sticky on Desktop, Natural Flow on Mobile) */}
           <div className="lg:col-span-4">
-            <div className="sticky top-28 space-y-6">
+            <div className="lg:sticky lg:top-28 space-y-6">
               {/* Consultation Card */}
               <div className="bg-[#0c1626] text-white rounded-3xl p-8 relative overflow-hidden shadow-2xl border border-white/10 space-y-6">
                 {/* Ambient Rose Sheen */}

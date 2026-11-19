@@ -21,7 +21,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onNavigate }) 
           
           {/* Left Column: Full-Height Architectural Photography */}
           <div className="lg:col-span-6 relative">
-            <div className="relative w-full h-[440px] sm:h-[560px] lg:h-[680px] overflow-hidden bg-slate-100 shadow-xl">
+            <div className="relative w-full h-[320px] sm:h-[480px] lg:h-[680px] rounded-2xl overflow-hidden bg-slate-100 shadow-xl">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeService.id}
@@ -67,7 +67,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onNavigate }) 
                   <div
                     key={service.id}
                     onMouseEnter={() => setSelectedIdx(idx)}
-                    onClick={() => onNavigate(`/${service.slug}`)}
+                    onClick={() => onNavigate(`/services#${service.slug}`)}
                     className="py-6 sm:py-7 flex items-center justify-between cursor-pointer group transition-colors select-none"
                   >
                     <div className="flex items-baseline gap-4 sm:gap-6">

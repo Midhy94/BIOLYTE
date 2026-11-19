@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -33,6 +33,20 @@ export const CareersPage: React.FC = () => {
   const [applicantEmail, setApplicantEmail] = useState('');
   const [applicantPhone, setApplicantPhone] = useState('');
   const [applicantNote, setApplicantNote] = useState('');
+
+  // Lock body scroll and dismiss on Escape
+  useEffect(() => {
+    if (!selectedJob) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedJob(null);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedJob]);
 
   const openings: JobOpening[] = [
     {
@@ -362,7 +376,7 @@ export const CareersPage: React.FC = () => {
                         value={applicantName}
                         onChange={(e) => setApplicantName(e.target.value)}
                         placeholder="e.g. Eng. Abdullah Al-Harbi"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-base sm:text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
                       />
                     </div>
 
@@ -376,7 +390,7 @@ export const CareersPage: React.FC = () => {
                         value={applicantEmail}
                         onChange={(e) => setApplicantEmail(e.target.value)}
                         placeholder="name@domain.com"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-base sm:text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
                       />
                     </div>
                   </div>
@@ -391,7 +405,7 @@ export const CareersPage: React.FC = () => {
                       value={applicantPhone}
                       onChange={(e) => setApplicantPhone(e.target.value)}
                       placeholder="+966 5X XXX XXXX (Al Jubail, Riyadh, etc.)"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-base sm:text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
                     />
                   </div>
 
@@ -405,7 +419,7 @@ export const CareersPage: React.FC = () => {
                       value={applicantNote}
                       onChange={(e) => setApplicantNote(e.target.value)}
                       placeholder="Paste your LinkedIn URL, online portfolio/CV link, or summarize your relevant process engineering and EPC experience..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-base sm:text-xs text-slate-900 focus:outline-none focus:border-dtre-accent"
                     />
                   </div>
 

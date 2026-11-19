@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Person } from '../types';
 import { X, Mail, Linkedin, Phone, Building } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,6 +9,19 @@ interface PersonModalProps {
 }
 
 export const PersonModal: React.FC<PersonModalProps> = ({ person, onClose }) => {
+  useEffect(() => {
+    if (!person) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [person, onClose]);
+
   if (!person) return null;
 
   return (

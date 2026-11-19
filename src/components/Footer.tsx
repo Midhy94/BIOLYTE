@@ -57,18 +57,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   <span>Thank you. You have been subscribed to BIOLYTE Technical Briefs.</span>
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 max-w-md">
                   <input
                     type="email"
                     required
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Enter your corporate email"
-                    className="flex-1 bg-white/5 border border-white/20 rounded-full px-5 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-dtre-accent transition-colors"
+                    className="flex-1 bg-white/5 border border-white/20 rounded-full px-5 py-2.5 text-base sm:text-sm text-white placeholder-white/40 focus:outline-none focus:border-dtre-accent transition-colors"
                   />
                   <button
                     type="submit"
-                    className="bg-dtre-accent hover:bg-dtre-accentHover text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-colors shrink-0"
+                    className="w-full sm:w-auto bg-dtre-accent hover:bg-dtre-accentHover text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-colors shrink-0"
                   >
                     Subscribe
                   </button>

@@ -20,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
   useEffect(() => {
     const handleScroll = () => {
+      if (mobileMenuOpen) return;
       const currentScrollY = Math.max(0, window.scrollY);
 
       setIsScrolled(currentScrollY > 40);
@@ -41,7 +42,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll and close on Escape when mobile menu is open
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   const isDarkTheme = !isScrolled && isHeroDark;
 

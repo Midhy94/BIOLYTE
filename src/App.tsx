@@ -55,17 +55,18 @@ export function App() {
         return <HomePage onNavigate={handleNavigate} />;
       
       case '/services':
+      case '/biogas':
+      case '/biomethane':
+      case '/biohydrogen':
+      case '/biomethanol':
+      case '/pavements':
       case '/industrial-and-logistics':
-        return <ServicesPage initialSlug="industrial-and-logistics" onNavigate={handleNavigate} />;
-      
       case '/science-technology':
-        return <ServicesPage initialSlug="science-technology" onNavigate={handleNavigate} />;
-      
       case '/alternatives':
-        return <ServicesPage initialSlug="alternatives" onNavigate={handleNavigate} />;
-      
-      case '/sustainability-consultancy':
-        return <ServicesPage initialSlug="sustainability-consultancy" onNavigate={handleNavigate} />;
+      case '/sustainability-consultancy': {
+        const slug = currentPath.replace('/', '') || 'biogas';
+        return <ServicesPage initialSlug={slug === 'services' ? 'biogas' : slug} onNavigate={handleNavigate} />;
+      }
       
       case '/property-search':
       case '/search/properties':

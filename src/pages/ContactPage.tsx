@@ -175,7 +175,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Eng. Tariq Al-Ghamdi"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
                     />
                   </div>
 
@@ -189,7 +189,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="t.alghamdi@company.com"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
                     />
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+966 5X XXX XXXX"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
                     />
                   </div>
 
@@ -220,7 +220,7 @@ export const ContactPage: React.FC = () => {
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="e.g. Eastern Agricultural Holdings"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
                     />
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export const ContactPage: React.FC = () => {
                     <select
                       value={formData.office}
                       onChange={(e) => setFormData({ ...formData, office: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-dtre-accent bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 focus:outline-none focus:border-dtre-accent bg-white"
                     >
                       <option value="Al Jubail (Headquarters)">Al Jubail (Kingdom Headquarters)</option>
                       <option value="European Engineering Center">European Engineering Center (Verona)</option>
@@ -248,7 +248,7 @@ export const ContactPage: React.FC = () => {
                     <select
                       value={formData.feedstockVolume}
                       onChange={(e) => setFormData({ ...formData, feedstockVolume: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-dtre-accent bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 focus:outline-none focus:border-dtre-accent bg-white"
                     >
                       <option value="< 20 tons/day">Under 20 tons / day</option>
                       <option value="20 - 50 tons/day">20 – 50 tons / day</option>
@@ -269,7 +269,7 @@ export const ContactPage: React.FC = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe your organic waste stream, desired outputs (electricity, biomethane, hydrogen, or dust suppression pavement), and site location..."
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-dtre-accent focus:ring-1 focus:ring-dtre-accent"
                   />
                 </div>
 
@@ -292,9 +292,9 @@ export const ContactPage: React.FC = () => {
             )}
           </div>
 
-          {/* Right Column: Strategic Hubs & Operational Standards (Sticky) */}
+          {/* Right Column: Strategic Hubs & Operational Standards (Sticky on Desktop) */}
           <div className="lg:col-span-5">
-            <div className="sticky top-28 space-y-6">
+            <div className="lg:sticky lg:top-28 space-y-6">
               {officesList.map((office) => {
               const isHQ = office.id === 'jubail';
               return (
