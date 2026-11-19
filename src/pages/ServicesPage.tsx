@@ -36,8 +36,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '24%']);
-  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const heroImageY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.03]);
 
   useEffect(() => {
     if (initialSlug && coreServices.some((s) => s.slug === initialSlug)) {
@@ -78,10 +78,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         ref={heroRef}
         className="relative bg-[#0c1626] text-white pt-36 sm:pt-44 pb-20 sm:pb-28 overflow-hidden"
       >
-        {/* Dynamic Background Image with Parallax & Bleed */}
+        {/* Dynamic Background Image with Subtle Parallax */}
         <motion.div 
           style={{ y: heroImageY, scale: heroImageScale }}
-          className="absolute -inset-x-4 -top-12 -bottom-24 z-0 will-change-transform pointer-events-none"
+          className="absolute inset-x-0 -top-6 -bottom-12 z-0 will-change-transform pointer-events-none"
         >
           <AnimatePresence mode="wait">
             <motion.img
