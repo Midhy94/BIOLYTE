@@ -15,7 +15,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
   const [isVisible, setIsVisible] = useState(true);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -62,43 +61,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate, isHeroD
 
   return (
     <>
-      {/* Fixed Header & Announcement Wrapper with Autohide on Scroll Down */}
+      {/* Fixed Header Wrapper with Autohide on Scroll Down */}
       <div 
         className={`fixed left-0 right-0 z-40 transition-[top] duration-300 ease-in-out ${
           isVisible ? 'top-0' : '-top-40'
         }`}
       >
-        {/* Top Banner */}
-        {bannerVisible && (
-          <div className={`text-xs font-medium py-2 px-4 transition-all duration-300 border-b ${
-            isScrolled
-              ? 'bg-dtre-navy text-white border-white/10'
-              : isDarkTheme
-              ? 'bg-dtre-darker/90 text-white/90 border-white/10'
-              : 'bg-dtre-navy text-white border-white/10'
-          }`}>
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <div className="flex items-center gap-2 mx-auto sm:mx-0">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-dtre-accent" />
-                <span>Sustainable Energy EPC: Explore our Biogas, Biomethane & Bio-Hydrogen Solutions</span>
-                <button 
-                  onClick={() => onNavigate('/services')} 
-                  className="underline font-semibold hover:text-dtre-accent transition-colors ml-2 inline-flex items-center gap-1"
-                >
-                  Explore Technologies <ArrowRight className="w-3 h-3" />
-                </button>
-              </div>
-              <button 
-                onClick={() => setBannerVisible(false)}
-                className="hidden sm:block text-white/60 hover:text-white text-sm"
-                aria-label="Close announcement banner"
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Main Navbar */}
         <header className="relative w-full transition-all duration-300">
           {/* Frosted Glass Background Plate (Isolated layer so it never breaks child dropdowns) */}
