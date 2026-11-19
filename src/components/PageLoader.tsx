@@ -14,22 +14,22 @@ export const PageLoader: React.FC<PageLoaderProps> = ({ onComplete }) => {
     // Lock body scroll while loader is visible
     document.body.style.overflow = 'hidden';
 
-    let currentProgress = 0;
+    let current = 0;
     const interval = setInterval(() => {
-      // Non-linear easing progress for authentic technical feel
-      const increment = currentProgress < 60 ? Math.random() * 8 + 4 : Math.random() * 6 + 2;
-      currentProgress = Math.min(100, currentProgress + increment);
-      setProgress(Math.floor(currentProgress));
+      // Natural cadence: rapid start, steady finish
+      const delta = current < 70 ? Math.floor(Math.random() * 8) + 5 : Math.floor(Math.random() * 5) + 3;
+      current = Math.min(100, current + delta);
+      setProgress(current);
 
-      if (currentProgress >= 100) {
+      if (current >= 100) {
         clearInterval(interval);
         setTimeout(() => {
           setIsFinished(true);
           document.body.style.overflow = '';
           if (onComplete) onComplete();
-        }, 250);
+        }, 180);
       }
-    }, 35);
+    }, 28);
 
     return () => {
       clearInterval(interval);
@@ -41,67 +41,67 @@ export const PageLoader: React.FC<PageLoaderProps> = ({ onComplete }) => {
     <AnimatePresence>
       {!isFinished && (
         <motion.div
-          key="biolyte-page-loader"
+          key="biolyte-architectural-loader"
           initial={{ opacity: 1 }}
           exit={{ 
             y: '-100%',
             transition: { 
-              duration: 0.8, 
-              ease: [0.76, 0, 0.24, 1] 
+              duration: 0.65, 
+              ease: [0.77, 0, 0.175, 1] 
             } 
           }}
-          className="fixed inset-0 z-[100] bg-[#0c1626] text-white flex flex-col items-center justify-between p-8 sm:p-12 select-none overflow-hidden"
+          className="fixed inset-0 z-[100] bg-[#080E1A] text-white flex flex-col justify-between p-6 sm:p-10 select-none overflow-hidden"
         >
-          {/* Ambient Glowing Rose Aura */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-dtre-accent/15 rounded-full blur-[120px] pointer-events-none" />
-
-          {/* Top Brand Tag */}
-          <div className="relative z-10 w-full flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-white/40">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-dtre-accent animate-pulse" />
-              <span>BIOLYTE EPC PLATFORM</span>
+          {/* Top Architectural Metadata Frame */}
+          <div className="w-full flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-400 border-b border-white/[0.08] pb-4">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-[#D12B81]" />
+              <span className="text-white/80 font-medium">BIOLYTE</span>
+              <span className="text-white/30 hidden sm:inline">/</span>
+              <span className="hidden sm:inline text-white/50">ENGINEERING & EPC</span>
             </div>
-            <span className="hidden sm:inline">AL JUBAIL • VERONA</span>
+            <div className="text-white/50">
+              AL JUBAIL INDUSTRIAL CITY
+            </div>
           </div>
 
-          {/* Center Logo & Progress */}
-          <div className="relative z-10 flex flex-col items-center text-center space-y-8 my-auto">
+          {/* Center: Crisp Geometric Presentation */}
+          <div className="flex flex-col items-center justify-center my-auto space-y-8 max-w-sm mx-auto w-full">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
             >
-              <BiolyteLogo className="h-9 sm:h-12 w-auto" fill="#D12B81" />
-              {/* Subtle Logo Glow Layer */}
-              <div className="absolute inset-0 blur-lg bg-dtre-accent/30 -z-10 opacity-70" />
+              <BiolyteLogo className="h-8 sm:h-10 w-auto" fill="#FFFFFF" />
             </motion.div>
 
-            {/* Hairline Progress Bar */}
-            <div className="space-y-3 w-60 sm:w-72">
-              <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+            {/* Hairline Technical Progress Track (Clean 1px line, zero blur) */}
+            <div className="w-full space-y-3">
+              <div className="w-full h-[1px] bg-white/15 relative overflow-hidden">
                 <motion.div
-                  className="h-full bg-dtre-accent"
+                  className="h-full bg-[#D12B81]"
                   style={{ width: `${progress}%` }}
-                  transition={{ ease: 'easeOut' }}
+                  transition={{ ease: 'linear' }}
                 />
               </div>
 
-              {/* Counter & Status */}
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-white/40 uppercase tracking-widest text-[10px]">
-                  Initializing Assets
+              {/* Monospace Coordinates & Percentage */}
+              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span className="tracking-widest uppercase text-white/40">
+                  {progress < 100 ? 'LOADING SYSTEM' : 'INITIALIZED'}
                 </span>
-                <span className="text-dtre-accent font-semibold tracking-wider">
-                  {String(progress).padStart(2, '0')}%
+                <span className="font-semibold text-white tracking-widest tabular-nums">
+                  {String(progress).padStart(3, '0')}%
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Bottom Descriptor */}
-          <div className="relative z-10 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-white/30 text-center">
-            Pioneering Sustainable Energy & Organic Upcycling
+          {/* Bottom Precision Blueprint Coordinates */}
+          <div className="w-full flex items-center justify-between text-[10px] font-mono tracking-widest text-white/40 border-t border-white/[0.08] pt-4">
+            <span className="hidden sm:inline">27°00&apos;16&quot;N 49°39&apos;29&quot;E</span>
+            <span>EUROPEAN ENGINEERING STANDARDS</span>
+            <span className="hidden sm:inline">KSA VISION 2030</span>
           </div>
         </motion.div>
       )}
